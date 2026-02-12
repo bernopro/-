@@ -210,8 +210,6 @@ function generateTicket(){
 
     const div = document.createElement("div");
     div.style.marginBottom = "40px";
-    div.style.fontSize = "20px";
-    div.style.lineHeight = "1.8";
     div.style.whiteSpace = "pre-line";
 
     div.innerText = ticketContent;

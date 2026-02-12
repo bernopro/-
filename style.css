@@ -150,3 +150,9 @@ select{
     font-size:18px;
     line-height:1.7;
 }
+.container{
+    width:100%;
+    max-width:100%;
+    padding:10px;
+    box-sizing:border-box;
+}
