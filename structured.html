@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <title>Սոլֆեջո — Հարցաթերթիկ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div id="selectionMenu">
+
+    <h2>Ընտրեք տարբերակը</h2>
+
+    <button onclick="startRandomAll()">Պատահական (1–20)</button>
+    <button onclick="startRandomFirst10()">Պատահական (1–10)</button>
+
+    <br><br>
+
+    <select id="ticketSelect">
+        <option value="">Ընտրեք տոմսը</option>
+    </select>
+    <button onclick="startFromDropdown()">Բացել</button>
+    
+
+</div>
+    
+    <div id="ticketArea">
+    <h1>ՍՈԼՖԵՋՈ ՀԱՐՑԱԹԵՐԹԻԿ</h1>
+
+    <h2 id="ticketType" class="ticket-header"></h2>
+
+    <hr>
+
+    <div id="questionsArea"></div>
+</div>
+
+
+    <br>
+    <button type="button" onclick="downloadPNG()">
+        Ներբեռնել PNG
+    </button>
+
+    <br><br>
+    <button onclick="window.location.href='index.html'">
+        Վերադառնալ գլխավոր էջ
+    </button>
+
+</div>
+
+<script src="structured.js"></script>
+
+</body>
+</html>

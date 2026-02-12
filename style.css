@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    font-family: "Noto Sans Armenian", Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    color: white;
+    padding: 40px 0;
+}
+
+/* Main container */
+.container {
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 40px;
+    border-radius: 18px;
+    width: 800px;
+    max-width: 95%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* Titles */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+/* Question text */
+.question p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Options */
+label {
+    display: block;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 16px;
+}
+
+label:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Radio buttons spacing */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Buttons */
+button {
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: white;
+    color: #1e3c72;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+/* Result section */
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.ticket-header {
+    font-family: 'Noto Sans Armenian', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+    letter-spacing: 1px;
+}
