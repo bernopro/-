@@ -1163,7 +1163,6 @@ answer: 0
 /* ===========================
    RANDOM 20 QUESTION SYSTEM
    =========================== */
-
 // Shuffle function
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -1202,8 +1201,6 @@ function calculateArmenianGrade(percentage) {
 /* ===========================
    DISPLAY 20 QUESTIONS
    =========================== */
-
-const quizForm = document.getElementById("quizForm");
 
 selectedQuestions.forEach((q, index) => {
 
@@ -1258,7 +1255,6 @@ function updateProgress() {
     const progressBar = document.getElementById("progressBar");
     progressBar.style.width = percentage + "%";
 
-    const submitBtn = document.getElementById("submitBtn");
 
     if (answered === selectedQuestions.length) {
         progressBar.style.background = "#28a745"; // green
@@ -1268,28 +1264,26 @@ function updateProgress() {
         submitBtn.disabled = true; // 🔒 LOCK
     }
 }
-
-
-
-quizForm.appendChild(progressContainer);
-
-
 function submitQuiz() {
+
     let score = 0;
     let wrongAnswers = [];
 
     selectedQuestions.forEach((q, index) => {
+
         const selected = document.querySelector(`input[name="q${index}"]:checked`);
 
         if (selected && parseInt(selected.value) === q.answer) {
             score++;
         } else {
             wrongAnswers.push({
+                number: index + 1,   // ✅ index exists HERE
                 question: q.question,
                 correct: q.options[q.answer],
                 selected: selected ? q.options[selected.value] : "Պատասխան չկա"
             });
         }
+
     });
 
     let percentage = Math.round((score / selectedQuestions.length) * 100);
@@ -1306,27 +1300,27 @@ function submitQuiz() {
     if (wrongAnswers.length > 0) {
         resultHTML += `<h3>Սխալ պատասխաններ</h3>`;
 
-        wrongAnswers.forEach((item, i) => {
+        wrongAnswers.forEach((item) => {
             resultHTML += `
-                <div style="margin:10px 0; padding:10px; border:1px solid #ccc;">
-                    <strong>${i + 1}. ${item.question}</strong><br>
+                <div style="margin:10px 0; padding:10px; border:1px solid #ccc; border-radius:8px;">
+                    <strong>${item.number}. ${item.question}</strong><br>
                     ❌ Քո պատասխանը: ${item.selected}<br>
                     ✅ Ճիշտ պատասխանը: ${item.correct}
                 </div>
             `;
         });
+
     } else {
         resultHTML += `<p>Կատարյալ արդյունք 🎉</p>`;
     }
 
-    resultHTML += `
-        <br><br>
-        <button onclick="restartQuiz()">🔄 Սկսել նորից</button>
-    `;
-
     document.getElementById("result").innerHTML = resultHTML;
 }
-function restartQuiz() {
+function resetQuiz() {
     location.reload();
 }
+function goHome() {
+    window.location.href = "index.html";
+}
+
 

@@ -1,4 +1,7 @@
-/* ==========================
+
+
+    const quizForm = document.getElementById("quizForm");
+    /* ==========================
    KEY DATABASE (MAX 4 SIGNS)
 ========================== */
 
@@ -31,28 +34,6 @@ const armenianNotesMap = {
 function randomItem(arr){
     return arr[Math.floor(Math.random()*arr.length)];
 }
-
-let ticketNumber;
-
-// Structure type (1–4 repeating)
-const ticketStructure = ((ticketNumber - 1) % 4) + 1;
-
-const isMajorTicket = [1,3,5,7,9,13,15,17,19,20].includes(ticketNumber);
-
-const key = isMajorTicket ? randomItem(majorKeys) : randomItem(minorKeys);
-const note = randomItem(notes);
-
-const armenianKeyName = armenianNotesMap[key];
-
-document.getElementById("ticketType").innerHTML =
-`
-Տոմս №${ticketNumber} (Տիպ ${ticketStructure})<br>
-${armenianKeyName} ${isMajorTicket ? "մաժոր" : "մինոր"}
-`;
-
-
-
-    `Հարցաթերթիկ ${ticketNumber} — ${armenianKeyName} ${isMajorTicket ? "մաժոր" : "մինոր"}`;
 
 /* ==========================
    TICKET STRUCTURES
@@ -305,4 +286,3 @@ function exportAllTickets(){
 }
 
 
-startRandomAll();

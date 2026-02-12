@@ -8,25 +8,29 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>Սոլֆեջո Քննական Թեստ</h1>
+<div class="main-container">
 
-    <form id="quizForm"></form>
+    <h1>Հարցաշար</h1>
 
-    <br>
-   <button type="button" id="submitBtn" onclick="submitQuiz()" disabled>
-        Ավարտել թեստը
-    </button>
+    <div class="quiz-box">
 
-    <h2 id="result"></h2>
+        <form id="quizForm"></form>
 
-    <br>
-    <button onclick="window.location.href='index.html'">
-        Վերադառնալ գլխավոր էջ
-    </button>
+<button type="button" onclick="submitQuiz()">Ստուգել</button>
+<button type="button" onclick="resetQuiz()">Վերագործարկել</button>
+<button type="button" onclick="goHome()">Վերադառնալ գլխավոր էջ</button>
+<div id="result"></div>
+
+
+    </div>
+
 </div>
 
 <script src="mcq.js"></script>
-
 </body>
+<footer class="footer">
+    © 2026 Bernard — Սոլֆեջո Հարցաթերթիկներ<br>
+    Designed for Sayat-Nova Music School for Education Use
+</footer>
+
 </html>
