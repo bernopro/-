@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <title>Ամբողջական քննություն</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="main-container">
+    <div class="quiz-box">
+
+        <h1>Ամբողջական քննություն</h1>
+
+        <div id="timer">Ժամանակ՝ 20:00</div>
+
+        <form id="quizForm"></form>
+
+        <button type="button" onclick="submitQuiz()">Ավարտել քննությունը</button>
+        <button type="button" onclick="resetExam()">
+            Վերագործարկել քննությունը
+        </button>
+        <div class="footer">
+            <button type="button" onclick="goHome()" class="home-btn">
+                ⬅ Վերադառնալ գլխավոր էջ
+            </button>
+        </div>
+        
+<br><br>
+        
+<div id="result"></div>
+
+<div class="footer">
+    © 2026 Bernard — Սոլֆեջո Հարցաթերթիկներ
+</div>
+
+</div> <!-- quiz-box -->
+</div> <!-- main-container -->
+
+<script src="mcq.js"></script>
+<script src="full.js" defer></script>
+</body>
+</html>
+
