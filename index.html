@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <title>Սոլֆեջոյի Փորձնական Քննություն</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Theme Toggle Button -->
+<div class="theme-toggle">
+    <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="container">
+    <h1><strong>Սոլֆեջոյի Փորձնական Քննություն</strong></h1>
+
+    <p class="description">
+        Ընտրեք բաժինը, որը ցանկանում եք վարժել։
+    </p>
+
+    <div class="buttons">
+        <button onclick="window.location.href='mcq.html'">
+            Հարցաշար
+        </button>
+
+        <button onclick="window.location.href='structured.html'">
+            Հարցաթերթիկ
+        </button>
+
+        <button onclick="window.location.href='listening.html'">
+            Լսողական բաժին
+        </button>
+
+        <button onclick="window.location.href='full.html'">
+            Ամբողջական քննություն
+        </button>
+    </div>
+
+    <div class="footer">
+        © 2026 Bernard — Սոլֆեջո Հարցաթերթիկներ
+    </div>
+
+</div>
+
+<script>
+// Theme toggle functionality
+function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Load saved theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        if (themeToggle) themeToggle.textContent = '☀️';
+    } else {
+        if (themeToggle) themeToggle.textContent = '🌙';
+    }
+});
+</script>
+
+</body>
+</html>

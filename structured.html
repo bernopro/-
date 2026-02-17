@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <title>Սոլֆեջո — Հարցաթերթիկ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<!-- Theme Toggle Button -->
+<div class="theme-toggle">
+    <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="container">
+
+    <div id="selectionMenu">
+        <h1>Ընտրեք Հարցաթերթիկ</h1>
+
+        <button onclick="startRandomAll()">Պատահական (1–20)</button>
+        <button onclick="startRandomFirst10()">Պատահական (1–10)</button>
+
+        <br><br>
+
+        <select id="ticketSelect">
+            <option value="">Ընտրեք տոմսը</option>
+        </select>
+        <button onclick="startFromDropdown()">Բացել</button>
+    </div>
+
+    <div id="ticketArea">
+        <h1>ՍՈԼՖԵՋՈ ՀԱՐՑԱԹԵՐԹԻԿ</h1>
+        <h2 id="ticketType" class="ticket-header"></h2>
+        <hr>
+        <div id="questionsArea"></div>
+    </div>
+
+    <br>
+    <button type="button" onclick="downloadPNG()">
+        Ներբեռնել PNG
+    </button>
+
+    <br><br>
+    <button onclick="goHome()" class="home-btn">
+        Վերադառնալ գլխավոր էջ
+    </button>
+
+    <!-- Footer moved INSIDE container -->
+    <div class="footer">
+        © 2026 Bernard — Սոլֆեջո Հարցաթերթիկներ
+    </div>
+
+</div>
+
+<script src="js/structured.js" defer></script>
+
+</body>
+</html>
