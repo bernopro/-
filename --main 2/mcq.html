@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <title>Սոլֆեջո Թեստ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Theme Toggle Button -->
+<div class="theme-toggle">
+    <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="main-container">
+
+    <h1>Հարցաշար</h1>
+
+    <div class="quiz-box">
+
+        <form id="quizForm"></form>
+
+        <button type="button" onclick="submitQuiz()">Ստուգել</button>
+        <button type="button" onclick="resetQuiz()">Վերագործարկել</button>
+        <button type="button" class="home-btn" onclick="goHome()">Վերադառնալ գլխավոր էջ</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <!-- Footer stays INSIDE main-container -->
+    <div class="footer">
+        © 2026 Bernard — Սոլֆեջո Հարցաթերթիկներ
+    </div>
+
+</div>
+
+<script src="js/mcq.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <title>Շուտով — Սոլֆեջո</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Theme Toggle Button -->
+<div class="theme-toggle">
+    <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+</div> 
+
+<div class="main-container">
+    <div class="quiz-box">
+        
+        <h1>🚧 Այս էջը պատրաստվում է</h1>
+        
+        <p style="font-size: 18px; text-align: center; margin: 30px 0;">
+            Այս բաժինը շուտով կլինի հասանելի։<br>
+            Խնդրում ենք փոքր-ինչ սպասել։
+        </p>
+        
+
+        
+        <button type="button" onclick="goHome()" class="home-btn">
+            ⬅ Վերադառնալ գլխավոր էջ
+        </button>
+        
+    </div>
+
+    <div class="footer">
+        © 2026 Bernard — Սոլֆեջո Հարցաթերթիկներ
+    </div>
+</div>
+
+<script>
+// Theme toggle functionality
+function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Load saved theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        if (themeToggle) themeToggle.textContent = '☀️';
+    } else {
+        if (themeToggle) themeToggle.textContent = '🌙';
+    }
+});
+
+function goHome() {
+    window.location.href = 'index.html';
+}
+</script>
+
+</body>
+</html>
