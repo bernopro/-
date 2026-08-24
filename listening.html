@@ -16,20 +16,38 @@
 
 <div class="main-container">
     <div class="quiz-box">
-        
-        <h1>🚧 Այս էջը պատրաստվում է</h1>
-        
-        <p style="font-size: 18px; text-align: center; margin: 30px 0;">
-            Այս բաժինը շուտով կլինի հասանելի։<br>
-            Խնդրում ենք փոքր-ինչ սպասել։
-        </p>
-        
+        <h1>Listening — Գուշակիր մեղեդին</h1>
 
-        
+        <p style="font-size: 18px; text-align: center; margin: 20px 0;">
+            Listen to a short clip, then identify the music. No track information is shown during playback.
+        </p>
+
+        <div class="controls" style="margin-top:8px;">
+            <button type="button" id="playBtn" class="control-btn">▶︎ Play clip</button>
+            <button type="button" id="stopBtn" class="control-btn">⏸ Stop playback</button>
+            <button type="button" id="nextBtn" class="control-btn">⏭ Next clip</button>
+        </div>
+
+        <label style="display:flex;justify-content:center;align-items:center;gap:8px;margin-top:12px;">
+            <input type="checkbox" id="autoNextToggle" checked>
+            Auto Next
+        </label>
+
+        <div id="status" style="text-align:center;margin-top:12px;color:#666;font-size:14px"></div>
+
+        <!-- Mapping table: match each file to an answer directly -->
+        <div style="text-align:center;margin-top:12px;gap:8px;display:flex;justify-content:center;flex-wrap:wrap;">
+            <button id="showAnswerBtn" type="button">Show Answer</button>
+        </div>
+
+        <div id="answer" style="text-align:center;margin-top:10px;color:#222;font-size:16px;font-weight:600"></div>
+
+        <!-- Audio playback is handled invisibly in JavaScript. -->
+        <div id="player" style="width:1px;height:1px;opacity:0;overflow:hidden;position:fixed;left:10px;top:10px;"></div>
+
         <button type="button" onclick="goHome()" class="home-btn">
             ⬅ Վերադառնալ գլխավոր էջ
         </button>
-        
     </div>
 
     <div class="footer">
@@ -70,6 +88,71 @@ document.addEventListener('DOMContentLoaded', function() {
 function goHome() {
     window.location.href = 'index.html';
 }
+</script>
+
+<script src="js/listening.js"></script>
+
+<!-- Inline manifest so page works from file:// without a server -->
+<script id="inlineList" type="application/json">
+[
+    {"name":"01 - Երաժշտական  գրականության ունկնդրում   2026թ.mp3","answer":"1\tԿ․Սեն-Սանս |\tՍյուիտ  «Կենդանիների   պարահանդես»\t| « Կարապը »"},
+    {"name":"02 - «Լավ տեմպերացված կլավիր».mp3","answer":"2\tՖ․Մենդելսոն\t| Կոնցերտ ջութակի և նվագախմբի համար\t| I   մաս"},
+    {"name":"03 - Կոմպոզիտոր.mp3","answer":"3\tՖ․Լիստ\t| «Հունգարական ռապսոդիա»  N 2"},
+    {"name":"04 - Ստեղծագործություն.mp3","answer":"4\tՅ․Ս․Բախ\t| Երգեhոնային տոկատ և ֆուգա\nd-moll\t| տոկատ"},
+    {"name":"05 - Mischa Maisky plays Bach Cello Suite No.1 in G (full).mp3","answer":"5\tՅ․Ս․Բախ\t| Սյուիտ թավջութակի համար  N 1 | պրելյուդ"},
+    {"name":"06 - Bach： WTC1 No. 1 in C major BWV 846 (Richter).mp3","answer":"6\tՅ․Ս․Բախ\t | ԼՏԿ   \n1-ին հատոր Պրելյուդ և ֆուգա\t| պրելյուդ   N1 C-dur"},
+    {"name":"07 - Vivaldi Four Seasons： Summer (L'Estate), complete; Freivogel & Voices of Music,  RV 315, original 4K.mp3","answer":"7\tԱ.Վիվալդի |\tԿոնցերտաշար ջութակի և նվագախմբի համար «Տարվա եղանակներ» | «Ամառ»   I մաս"},
+    {"name":"08 - Vivaldi, The Four Seasons, Spring (La Primavera), 1st movement.mp3","answer":"8\tԱ.Վիվալդի |\tԿոնցերտաշար  ջութակի և նվագախմբի համար «Տարվա եղանակներ» |\t«Գարուն»   I  մաս"},
+    {"name":"09 - Vivaldi Four Seasons： Autumn (Autunno) Full, original version. Carla Moore & Voices of Music RV 293.mp3","answer":"9\tԱ.Վիվալդի |\tԿոնցերտաշար  ջութակի և նվագախմբի համար «Տարվա եղանակներ»  \t| «Աշուն»  I   մաս"},
+    {"name":"10 - Vivaldi Four Seasons： Winter (L'Inverno), original version. Freivogel & Voices of Music  RV 297 4K.mp3","answer":"10\tԱ.Վիվալդի |\tԿոնցերտաշար  ջութակի և նվագախմբի համար «Տարվա եղանակներ» |\t«Ձմեռ»   I   մաս"},
+    {"name":"11 - Mozart - Symphony No. 40 in G Minor KV 550 (Berlin Philharmonic ⧸ von Karajan).mp3","answer":"11\tՎ․Ա.Մոցարտ |\tՍիմֆոնիա  N 40, g-moll |\tI մաս"},
+    {"name":"12 - Реквием Моцарта (Requiem de Mozart - Lacrimosa - Karl Böhm - Sinfónica de Viena).mp3","answer":"12\tՎ․Ա.Մոցարտ |\tՌեքվիեմ |\t« Lacrimosa »"},
+    {"name":"13 - Beethoven 5th Symphony in C Minor Op.67- Herbert Von Karajan (1080 60fps).mp3","answer":"13\tԼ․վան Բեթհովեն |\tՍիմֆոնիա N 5,  c-moll |\tI մաս"},
+    {"name":"14 - Schubert - Ave Maria.mp3","answer":"14\tՖ․Շուբերտ |\t« Ave Maria »"},
+    "16 - Seong-Jin Cho – Chopin： Etude in C Minor, Op. 10 No. 12 ＂Revolutionary＂.mp3",
+    {"name":"17 - Edvard Grieg： ＂Peer Gynt - Morning Mood＂.mp3","answer":"16\tԷ.Գրիգ |\tՍիմֆոնիկ սյուիտ «Պեր Գյունտ» |\t« Առավոտ »"},
+    {"name":"18 - Surb Surb.mp3","answer":"17\tՄ.Եկմալյան |\tՊատարագ |\t« Սուրբ, սուրբ »"},
+    {"name":"19 - Komitas - Antuni (Live voice).mp3","answer":"19\tԿոմիտաս\tմեներգ |\t« Անտունի »"},
+    {"name":"20 - Lousine Zakarian - Krunk - Komitas.mp3","answer":"18\tԿոմիտաս\tմեներգ |\t« Կռունկ »"},
+    {"name":"21 - Komitas - Mokac Mirza (Live voice).mp3","answer":"20\tԿոմիտաս\tմեներգ |\t« Մոկաց Միրզա »"},
+    {"name":"22 - KOMITAS - ＂Garun a＂ - Yerevan State Chamber Choir.mp3","answer":"21\tԿոմիտաս\tխմբերգ |\t« Գարուն ա »"},
+    {"name":"23 - Komitas - Four Dances ｜ Hayk Melikyan in Komitas Festival 2020, Yerevan.mp3","answer":"22\tԿոմիտաս |\t« Յոթ պար»  դաշնամուրային շարք |\t« Երանգի »"},
+    {"name":"24 - Live： Hayk Melikyan plays Komitas & Dellalian ｜ AURORA PRIZE 2019.mp3","answer":"23\tԿոմիտաս\t| « Յոթ պար»  դաշնամուրային շարք | « Շուշիկի »"},
+    {"name":"25 - Պավել Լիսիցյան⧸ Այ վարդ⧸ Pavel Lisitsian ⧸Rose.mp3","answer":"25\tԱլ․Սպենդիարյան |\tՌոմանս « Այ վարդ »"},
+    {"name":"26 - Kara-Murza： Lepo Lele ⧸ The State Academic Choir of Armenia.mp3","answer":"24\tՔ.Կարա- Մուրզա |\tԽմբերգ  «Լեպ-հո, լե լե»"},
+    {"name":"27 - KOHAR Symphony Orchestra & Choir - Ampi Takic.mp3","answer":"26\tԱ․Տիգրանյան |\tՕպերա « Անուշ »\t| Խմբերգ\t« Ամպի տակից ջուր է գալիս »"},
+    {"name":"28 - Asum e urin  from Anoush opera - Gohar Gasparyan.mp3","answer":"27\tԱ․Տիգրանյան\t| Օպերա « Անուշ » | Անուշի երգը\t« Ասում են ուռին»"},
+    {"name":"29 - Anoush Opera - Համբարձում Յայլա - Hambartzoum's Vacation Place.mp3","answer":"28\tԱ․Տիգրանյան\t| Օպերա «Անուշ » | խմբերգ\t«Համբարձում յայլա»"},
+    {"name":"30 - Gevorg Yeghiazaryan ⧸⧸ Ashun ⧸⧸ Աշուն ⧸⧸ Ռ․Մելիքյան.mp3","answer":"29\tՌ․Մելիքյան |\tՌոմանս «Աշուն»"},
+    {"name":"31 - Глинка - Вальс-фантазия - Mikhail Glinka - Waltz Fantasia (Walse Fantasie).mp3","answer":"30\tՄ․Գլինկա |\t«Վալս-ֆանտազիա»"},
+    {"name":"32 - РИМСКИЙ-КОРСАКОВ. «ШЕХЕРАЗАДА» 2ч..mp3","answer":"31\tՆ.Ռիմսկի- Կորսակով |\tՍիմֆոնիկ սյուիտ «Շաhրեզադե» |\t«Շահրեզադե»-ի թեմա"},
+    {"name":"33 - Tchaikovsky： Piano Concerto No. 1 ⧸ Weissenberg - Karajan - Berliner Philharmoniker.mp3","answer":"32\tՊ․Չայկովսկի |\tԿոնցերտ դաշնամուրի և նվագախմբի համար N 1 |\tI մաս"},
+    {"name":"34 - Rachmaninoff - Piano Concerto No. 2, Op. 18 I. Moderato (Rubinstein).mp3","answer":"33\tՍ․Ռախմանինով |\tԿոնցերտ դաշնամուրի և նվագախմբի համար N 2 |\tI մաս"},
+    {"name":"35 - Rachmaninoff Piano Concerto No. 2, Movement 2 ⧸⧸ Krystian Zimerman, Seiji Ozawa, BSO.mp3","answer":"34\tՍ․Ռախմանինով |\tԿոնցերտ դաշնամուրի և նվագախմբի համար N 2 |\tII  մաս"},
+    {"name":"36 - Romeo and Juliet – Dance of the Knights (The Royal Ballet).mp3","answer":"35\tՍ․Պրոկոֆև |\tԲալետ « Ռոմեո և Ջուլիետ »\t|Ասպետների պարը՝\t«Մոնտեկի և Կապուլետի»"},
+    {"name":"37 - Symphony No. 7 mvt. 1 ＂The Invasion Episode＂ - Dmitri Shostakovich.mp3","answer":"36\tԴ․Շոստակովիչ |\tՍիմֆոնիա  N 7   «Լենինգրադյան» |\tI մաս՝ գրոհի թեման"},
+    {"name":"38 - Sergey Khachatryan - Khachaturian, Violin concerto in D Minor.mp3","answer":"37\tԱ․Խաչատրյան |\tԿոնցերտ ջութակի և նվագախմբի համար |\tI  մաս"},
+    {"name":"39 - Aram Khachaturian - Piano Concerto in D flat major.mp3","answer":"38\tԱ․Խաչատրյան |\tԿոնցերտ  դաշնամուրի և  նվագախմբի համար |\tI   մաս"},
+    {"name":"40 - Khachaturian： Sabre Dance ⧸ Rattle · Berliner Philharmoniker.mp3","answer":"39\tԱ․Խաչատրյան\t| Բալետ «Գայանե» | « Սուսերով պար»"},
+    {"name":"41 - Aram Khachaturian - Gayane - Dance of the Rose Maidens.mp3","answer":"40\tԱ․Խաչատրյան |\tԲալետ «Գայանե»  | «Վարդագույն աղջիկների պարը»"},
+    {"name":"42 - Aram Khachaturian - Lezginka from Gayane.mp3","answer":"41\tԱ․Խաչատրյան |\tԲալետ «Գայանե»  | «Լեզգինկա»"},
+    {"name":"43 - Aram Khachaturyan - Gayane - 08 Act One, Scene One 'Spring' - Uzundara.mp3","answer":"42\tԱ․Խաչատրյան\t| Բալետ «Գայանե» | «Ուզունդարա»"},
+    {"name":"44 - Aram Khachaturian - Adagio of Spartacus and Phrygia.mp3","answer":"43\tԱ.Խաչատրյան\t| Բալետ «Սպարտակ» | «Սպարտակի և Փրյուգիայի ադաջո»"},
+    {"name":"45 - Aram Khachaturian - Masquerade Suite - Waltz.mp3","answer":"44\tԱ.Խաչատրյան\t| Սյուիտ  «Դիմակահանդես»  | «Վալս»"},
+    {"name":"46 - Aram Khachaturian - Symphony No. 2 in E Minor 'The Bell'.mp3","answer":"45\tԱ․Խաչատրյան\t| Սիմֆոնիա N 2, « Զանգերով » | նախաբանի թեմա"},
+    {"name":"47 - Գրիգոր Եղիազարյան⧸Աղջիկների շուրջպար (Նուբար-Նուբար)⧸Բալետային սյուիտ N2 «Սևան» բալետից.mp3","answer":"46\tԳ․Եղիազարյան |\tԲալետ « Սևան » |\t« Նուբար-Նուբար »"},
+    {"name":"48 - Arno Babajanyan - Heroic Ballad for Piano and Orchestra (1950).mp3","answer":"47\tԱ․Բաբաջանյան |\t«Հերոսական բալլադ»\tդաշնամուրի և նվագախմբի համար |\tնախաբանի թեմա"},
+    {"name":"49 - Babadjanian - Vagarshapat Dance.mp3","answer":"48\tԱ․Բաբաջանյան |\tԴաշն.պիես  «Վաղարշապատի պար»"},
+    {"name":"50 - 6 Pictures： No. 2, Folk Dance.mp3","answer":"49\tԱ․Բաբաջանյան |\tԴաշն.շարք  «Վեց պատկեր »\t| « ժողովրդական »"},
+    {"name":"51 - VOCALIZE - LUCINE ZAKARIAN - ARNO BABADJANIAN.mp3","answer":"50\tԱ. Բաբաջանյան | «Վոկալիզ»  ձայնի և նվագախմբի համար"},
+    {"name":"53 - Edvard Mirzoyan - Symphony For Strings And Timpani - Part 1.mp3","answer":"52\tԷ․Միրզոյան |\tՍիմֆոնիա  լարայինների  և գոսերի համար  |\tնախաբանի թեմա"},
+    {"name":"54 - Ghazaros Saryan - Symphonic Panel 'Armenia'.mp3","answer":"53\tՂ․Սարյան |\tՍիմֆոնիկ պաննո « Հայաստան » |\t« Գառնի»"},
+    {"name":"55 - Avet Terteryan - Symphony No 3, Part 3.mp3","answer":"54\tԱ. Տերտերյան |\tՍիմֆոնիա  N 3 |\tIII մաս"},
+    {"name":"56 - It is Snowing - Edgar Hovhannisyan (arrangement of armenian folk song) - Armenian Radio and TV Choir.mp3","answer":"55\tԷդ. Հովհաննիսյան  |\tԽմբերգ  «Ձյուն է գալիս»"},
+    {"name":"57 - City Anthem of Yerevan (Armenia) - ＂Էրեբունի-Երևան＂ (Erebuni-Erevan).mp3","answer":"56\tԷդ․ Հովհաննիսյան |\tԵրևան քաղաքի հիմն\t«Էրեբունի-Երևան»"},
+    {"name":"58 - Марш Сеньора Помидора из балета Чиполлино К Хачатуряна.mp3","answer":"58\tԿարեն Խաչատրյան\tԲալետ  | «Չիպոլինո» |\t«Սինյոր պոմիդոր»- ի քայլերգ"},
+    {"name":"59 - Карен Хачатրյан  Галоп из балета Чиполлино.mp3","answer":"57\tԿարեն Խաչատրյան\tԲալետ  | «Չիպոլինո»\t| «Գալոպ»"}
+]
 </script>
 
 </body>
