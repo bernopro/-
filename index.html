@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Սոլֆեջոյի Փորձնական Քննություն</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -44,36 +45,7 @@
 
 </div>
 
-<script>
-// Theme toggle functionality
-function toggleTheme() {
-    const body = document.body;
-    const themeToggle = document.getElementById('themeToggle');
-    
-    if (body.getAttribute('data-theme') === 'dark') {
-        body.removeAttribute('data-theme');
-        themeToggle.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-    } else {
-        body.setAttribute('data-theme', 'dark');
-        themeToggle.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-    }
-}
-
-// Load saved theme on page load
-document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('theme');
-    const themeToggle = document.getElementById('themeToggle');
-    
-    if (savedTheme === 'dark') {
-        document.body.setAttribute('data-theme', 'dark');
-        if (themeToggle) themeToggle.textContent = '☀️';
-    } else {
-        if (themeToggle) themeToggle.textContent = '🌙';
-    }
-});
-</script>
+<script src="js/shared.js"></script>
 
 </body>
 </html>
