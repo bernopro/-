@@ -29,7 +29,7 @@ function startTimer() {
         document.body.appendChild(timerDisplay);
     }
 
-    timerDisplay.textContent = '\u054A\u0561\u057F\u0561\u0572\u0561\u0584\u0584 \u2014 20:00';
+    timerDisplay.textContent = '\u0544\u0576\u0561\u0581\u0561\u056E \u056A\u0561\u0574\u0561\u0576\u0561\u056F \u2014 20:00';
 
     timerInterval = setInterval(() => {
         timeLeft--;
@@ -38,7 +38,7 @@ function startTimer() {
         let seconds = timeLeft % 60;
 
         timerDisplay.textContent =
-            '\u054A\u0561\u057F\u0561\u0572\u0561\u0584\u0584 \u2014 ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+            '\u0544\u0576\u0561\u0581\u0561\u056E \u056A\u0561\u0574\u0561\u0576\u0561\u056F \u2014 ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 
         if (timeLeft <= 60) {
             timerDisplay.classList.add("timer-warning");
@@ -58,7 +58,7 @@ function resetQuiz() {
 
     const timerDisplay = document.getElementById("timer");
     if (timerDisplay) {
-        timerDisplay.textContent = '\u054A\u0561\u057F\u0561\u0572\u0561\u0584\u0584 \u2014 20:00';
+        timerDisplay.textContent = '\u0544\u0576\u0561\u0581\u0561\u056E \u056A\u0561\u0574\u0561\u0576\u0561\u056F \u2014 20:00';
         timerDisplay.classList.remove("timer-warning");
     }
 
