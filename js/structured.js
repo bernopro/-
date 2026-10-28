@@ -112,7 +112,7 @@
         for (let i = 1; i <= 20; i++) {
             const option = document.createElement("option");
             option.value = i;
-            option.textContent = "\u055F\u0578\u0574\u057D " + i;
+            option.textContent = "\u054F\u0578\u0574\u057D " + i;
             select.appendChild(option);
         }
     });

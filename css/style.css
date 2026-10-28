@@ -97,6 +97,83 @@ body{
     padding:20px;
 }
 
+/* Structured ticket page */
+.container {
+    width:min(1120px, calc(100% - 48px));
+    margin:48px auto;
+}
+
+#selectionMenu,
+#ticketArea {
+    background:var(--card-bg);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.2);
+}
+
+#selectionMenu {
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+    padding:32px;
+    margin-bottom:24px;
+}
+
+#selectionMenu h1 {
+    grid-column:1 / -1;
+    margin:0 0 8px;
+}
+
+#selectionMenu br {
+    display:none;
+}
+
+#selectionMenu button {
+    width:100%;
+    margin:0;
+}
+
+#ticketSelect {
+    width:100%;
+    min-width:180px;
+    min-height:52px;
+    padding:0 16px;
+    border:1px solid var(--card-border);
+    border-radius:8px;
+    background:var(--card-bg);
+    color:var(--text-color);
+    font:600 17px 'Noto Sans Armenian', sans-serif;
+}
+
+#ticketSelect option {
+    background:#ffffff;
+    color:#1e293b;
+}
+
+[data-theme="dark"] #ticketSelect {
+    color-scheme:dark;
+    background:#1e293b;
+    border-color:#64748b;
+}
+
+[data-theme="dark"] #ticketSelect option {
+    background:#1e293b;
+    color:#f8fafc;
+}
+
+#ticketArea {
+    width:100%;
+    max-width:1120px;
+}
+
+.ticket-content {
+    white-space:pre-wrap;
+    font-size:19px;
+    line-height:1.8;
+}
+
 /* ============================= */
 /* CARD */
 /* ============================= */
@@ -287,6 +364,40 @@ p{
 @media (max-width:600px){
     .quiz-box{
         padding:25px;
+    }
+
+    .container {
+        width:calc(100% - 32px);
+        margin:24px auto;
+    }
+
+    #selectionMenu {
+        grid-template-columns:1fr;
+        padding:24px;
+    }
+
+    #ticketSelect {
+        min-width:0;
+    }
+
+    #ticketArea {
+        padding:24px 20px;
+        border-radius:16px;
+    }
+
+    #selectionMenu h1 {
+        font-size:26px;
+        margin-bottom:4px;
+    }
+
+    .ticket-header {
+        font-size:18px;
+        margin-bottom:20px;
+    }
+
+    .ticket-content {
+        font-size:17px;
+        line-height:1.65;
     }
 
     h1{
