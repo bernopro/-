@@ -1136,7 +1136,7 @@ const questions = [
     "Ա․Տիգրանյան",
     "Տ․Չուխաջյան"
     ],
-    answer: 1
+    answer: 2
     },
     
     {
