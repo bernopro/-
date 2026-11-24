@@ -3,6 +3,7 @@
 
 let localMode = false;
 let localList = [];
+let allLocalList = [];
 let localIndex = 0;
 let audioEl = null;
 let localTimer = null;
@@ -19,14 +20,14 @@ function shouldAutoNext() {
 function formatTitle(name) {
     if (!name) return '';
     let t = String(name).replace(/\.mp3$/i, '');
-    t = t.replace(/^\s*\d+\s*[\u2013\u2014\u2012:]\s*/, '');
+    t = t.replace(/^\s*\d+\s*(?:-|[\u2013\u2014\u2012:])\s*/, '');
     return t.trim();
 }
 
 function extractNumber(name) {
     if (!name) return '';
     const s = String(name).trim();
-    const m = s.match(/^\s*(\d+)\s*[\u2013\u2014\u2012:]/);
+    const m = s.match(/^\s*(\d+)\s*(?:-|[\u2013\u2014\u2012:])/);
     if (m && m[1]) return m[1];
     return '';
 }
@@ -66,6 +67,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     const stopBtn = document.getElementById('stopBtn');
     const nextBtn = document.getElementById('nextBtn');
     const autoNextToggle = document.getElementById('autoNextToggle');
+    const rangeButtons = document.querySelectorAll('.range-btn');
+
+    rangeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            rangeButtons.forEach(function(item) { item.classList.remove('active'); });
+            button.classList.add('active');
+            applyListeningRange(button.dataset.range);
+        });
+    });
 
     if (autoNextToggle) autoNextToggle.addEventListener('change', function() {
         setStatus(autoNextToggle.checked ? 'Auto Next enabled.' : 'Auto Next disabled.');
@@ -136,6 +146,7 @@ async function loadLocalList() {
 
         if (Array.isArray(data) && data.length > 0) {
             localList = data.slice();
+            allLocalList = data.slice();
             shuffleArray(localList);
             localMode = true;
             console.log('Local audio mode enabled. Files:', localList.length);
@@ -145,6 +156,44 @@ async function loadLocalList() {
         console.log('No audio/list.json or inline list found; file-picker fallback available.');
     } catch (e) {
         console.warn('No local audio manifest found or failed to load:', e);
+    }
+}
+
+function applyListeningRange(range) {
+    stopLocalPlayback();
+
+    const answerEl = document.getElementById('answer');
+    if (answerEl) answerEl.textContent = '';
+
+    if (!allLocalList.length) allLocalList = localList.slice();
+
+    let filtered = allLocalList.slice();
+    if (range !== 'all') {
+        const parts = range.split('-');
+        const minimum = Number(parts[0]);
+        const maximum = Number(parts[1]);
+
+        filtered = filtered.filter(function(item) {
+            const name = typeof item === 'string' ? item : (item && item.name ? item.name : '');
+            const answer = item && typeof item === 'object' ? String(item.answer || '') : '';
+            const numberText = extractNumber(name) || (answer.match(/^\s*(\d+)/) || ['', ''])[1];
+            const number = Number(numberText);
+            return number >= minimum && number <= maximum;
+        });
+    }
+
+    localList = filtered;
+    shuffleArray(localList);
+    localIndex = 0;
+
+    if (localList.length > 0) {
+        localMode = true;
+        const status = document.getElementById('status');
+        if (status) status.textContent = 'Selected ' + localList.length + ' listening items.';
+    } else {
+        localMode = false;
+        const status = document.getElementById('status');
+        if (status) status.textContent = 'No listening items found in this range.';
     }
 }
 
