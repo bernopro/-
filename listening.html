@@ -10,7 +10,7 @@
 <body>
 
 <div class="theme-toggle">
-    <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    <button id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Փոխել գույնի ռեժիմը" title="Փոխել գույնի ռեժիմը"><span id="themeIcon" aria-hidden="true">🌙</span></button>
 </div>
 
 <div class="main-container">
@@ -18,9 +18,9 @@
         <h1>Լսողական — Գուշակիր մեղեդին</h1>
 
         <div class="range-selector" aria-label="Ընտրել լսողականի շրջանակը">
-            <button type="button" class="range-btn" data-range="1-36">1–36</button>
-            <button type="button" class="range-btn" data-range="36-58">36–58</button>
-            <button type="button" class="range-btn active" data-range="all">Բոլորը</button>
+            <button type="button" class="range-btn" data-range="1-36" aria-pressed="false">1–36</button>
+            <button type="button" class="range-btn" data-range="36-58" aria-pressed="false">36–58</button>
+            <button type="button" class="range-btn active" data-range="all" aria-pressed="true">Բոլորը</button>
         </div>
 
         <div class="controls">

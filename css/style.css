@@ -64,27 +64,57 @@ body{
 }
 
 #themeToggle {
-    background: var(--card-bg);
-    border: 2px solid var(--card-border);
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px;
+    min-height: 50px;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none;
+    flex: 0 0 50px;
+    background: #ffffff;
+    border: 2px solid #64748b;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
     line-height: 1;
-    font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: var(--text-color);
+    color: #1e293b;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
 
+[data-theme="dark"] #themeToggle {
+    background: #334155;
+    border-color: #cbd5e1;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+#themeIcon {
+    display: block;
+    width: 100%;
+    font-family: "Segoe UI Emoji", "Noto Sans Symbols", sans-serif;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    opacity: 1;
+    visibility: visible;
+}
+
 #themeToggle:hover {
     transform: scale(1.1);
-    background: var(--hover-bg);
+    background: #f1f5f9;
+}
+
+[data-theme="dark"] #themeToggle:hover {
+    background: #475569;
 }
 
 /* ============================= */
@@ -475,7 +505,8 @@ p{
 
 .range-btn:hover,
 .range-btn.active {
-    background: var(--primary-color);
+    background: #1d4ed8;
+    border-color: #1d4ed8;
     color: #fff;
 }
 

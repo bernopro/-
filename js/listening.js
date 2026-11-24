@@ -71,8 +71,11 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     rangeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
-            rangeButtons.forEach(function(item) { item.classList.remove('active'); });
-            button.classList.add('active');
+            rangeButtons.forEach(function(item) {
+                const selected = item === button;
+                item.classList.toggle('active', selected);
+                item.setAttribute('aria-pressed', String(selected));
+            });
             applyListeningRange(button.dataset.range);
         });
     });

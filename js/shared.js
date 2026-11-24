@@ -6,14 +6,16 @@
 function toggleTheme() {
     const body = document.body;
     const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    if (!themeToggle) return;
 
     if (body.getAttribute('data-theme') === 'dark') {
         body.removeAttribute('data-theme');
-        themeToggle.textContent = '\u{1F319}';
+        (themeIcon || themeToggle).textContent = '\u{1F319}';
         localStorage.setItem('theme', 'light');
     } else {
         body.setAttribute('data-theme', 'dark');
-        themeToggle.textContent = '\u{2600}\u{FE0F}';
+        (themeIcon || themeToggle).textContent = '\u{2600}\u{FE0F}';
         localStorage.setItem('theme', 'dark');
     }
 }
@@ -22,12 +24,13 @@ function toggleTheme() {
 document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme');
     const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
 
     if (savedTheme === 'dark') {
         document.body.setAttribute('data-theme', 'dark');
-        if (themeToggle) themeToggle.textContent = '\u{2600}\u{FE0F}';
+        if (themeToggle) (themeIcon || themeToggle).textContent = '\u{2600}\u{FE0F}';
     } else {
-        if (themeToggle) themeToggle.textContent = '\u{1F319}';
+        if (themeToggle) (themeIcon || themeToggle).textContent = '\u{1F319}';
     }
 });
 
